@@ -104,16 +104,7 @@ contract CrossChainAtomicSwapTest is Test {
         vm.prank(initiator);
         swapContract.refundSwap(0);
 
-        (
-            ,
-            ,
-            address _token,
-            uint256 _amount,
-            ,
-            uint256 _timelock,
-            bool completed,
-            bool refunded
-        ) = swapContract.swaps(0);
+        (, , , , , , , bool refunded) = swapContract.swaps(0);
 
         assertTrue(refunded);
         assertEq(token.balanceOf(initiator), amount);
